@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exemplo de Botões</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+
+  a {
+    text-decoration: none;
+    color: blue;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 50px;
+    background: white;
+    border-radius: 5px;
+  }
+
+  .box {
+    font-size: 20px;
+    color: white;
+    height: 250px;
+    width: 350px;
+    border-radius: 10px;
+    background: #191919;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+    width: 150px;
+  }
+
+  button {
+    height: 30px;
+    width: 50px;
+    background: white;
+    border: none;
+    border-radius: 5px;
+    color: blue;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+  }
+</style>
+</head>
+<body>
+<div class="box">
+  <p>fototeta?</p>
+  <div class="button-container">
+    <a href="https://www.canva.com/design/DAGHa_wPKCc/jFRHWN6ZrZCX93mNGPppbw/view?utm_content=DAGHa_wPKCc&utm_campaign=designshare&utm_medium=link&utm_source=editor" target="_blank">Sim</a>
+    <button id="no">Não</button>
+  </div>
+</div>
+<script>
+  let button = document.getElementById('no');
+  let height = window.innerHeight - 50;
+  let width = window.innerWidth - 50;
+
+  function moveButton() {
+    button.style.position = "absolute";
+    button.style.top = Math.random() * height + "px";
+    button.style.left = Math.random() * width + "px";
+  }
+
+  // For desktop (mouse events)
+  button.addEventListener('mouseover', moveButton);
+
+  // For mobile (touch events)
+  button.addEventListener('touchstart', function(event) {
+    event.preventDefault(); // Prevent default behavior to ensure button moves
+    moveButton();
+  });
+
+  // Ensure button stays within viewport on resize
+  window.addEventListener('resize', function() {
+    height = window.innerHeight - 50;
+    width = window.innerWidth - 50;
+  });
+</script>
+</body>
+</html>
